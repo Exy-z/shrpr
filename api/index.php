@@ -6,7 +6,6 @@ header("Access-Control-Allow-Headers: content-type");
 header("Allow: OPTIONS, POST, HEAD, GET");
 header("Alt-Svc: h3=\":443\"; ma=86400");
 header("Cf-Cache-Status: DYNAMIC");
-header("Content-Encoding: br");
 header("Vary: Origin");
 
 // Check if it's a POST request or if 'check' parameter is present in the URL
