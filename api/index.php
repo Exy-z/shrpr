@@ -8,17 +8,17 @@ header("Alt-Svc: h3=\":443\"; ma=86400");
 header("Cf-Cache-Status: DYNAMIC");
 header("Vary: Origin");
 
-// Check if it's a POST request or if 'check' parameter is present in the URL
-if ($_SERVER["REQUEST_METHOD"] === "POST" || isset($_GET['check'])) {
+// Check if it's a POST request
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Fetch the POST data if needed, but for now, we'll just acknowledge the request
+    // $postData = json_decode(file_get_contents("php://input"), true);
+
+    // Respond with success
     $responseData = array("success" => true);
-
-    // Encode the data as JSON
-    $jsonResponse = json_encode($responseData);
-
-    // Send the JSON response
-    echo $jsonResponse;
+    echo json_encode($responseData);
 } else {
     // If it's not a POST request, return an error
+    http_response_code(400);
     echo json_encode(array("success" => false, "error" => "Invalid request method"));
 }
 ?>
